@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Development 
+
+####### Build project
+ng build --watch --delete-output-path false
+
+###### Building docker image (development) : 
+docker build -t nginx-angular -f nginx.dockerfile .
+
+###### Run docker container from image (:
+docker run -p 8080:80 -v ${pwd}/dist/piano:/usr/share/nginx/html nginx-angular
+
+## Deployment to azure
+
+docker build -t pianoacr.azurecr.io/pianowebapp:latest -f nginx.prod.dockerfile .
+
+docker push pianoacr.azurecr.io/pianowebapp:latest
+
+

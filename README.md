@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Development 
 
-####### Build project
+###### Build project
 ng build --watch --delete-output-path false
 
 ###### Building docker image (development) : 

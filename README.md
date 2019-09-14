@@ -41,6 +41,10 @@ docker run -p 8080:80 -v ${pwd}/dist/piano:/usr/share/nginx/html nginx-angular
 
 docker build -t pianoacr.azurecr.io/pianowebapp:latest -f nginx.prod.dockerfile .
 
+az login
+
+az acr login --name pianoacr 
+
 docker push pianoacr.azurecr.io/pianowebapp:latest
 
 

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ChallengeModule} from './challenge/challenge.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {ChallengeModule} from './challenge/challenge.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ChallengeModule
+    ChallengeModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

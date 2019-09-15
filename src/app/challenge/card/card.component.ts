@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'piano-card',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  musicXml: string;
+
+  constructor(private http: HttpClient) {
+    const _headers = new HttpHeaders();
+
+    const headers = _headers.set('Content-Type', 'text/xml')
+    http.get('./assets/test.musicxml', {headers: _headers, responseType: 'text'})
+      .subscribe(res => this.musicXml = res);
+  }
 
   ngOnInit() {
   }

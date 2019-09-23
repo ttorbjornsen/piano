@@ -1,0 +1,15 @@
+<div class="parent" *ngIf="chordProgressions$ | async as chordProgressions">
+  <div class="flex-container">
+      <div class="flex-item" *ngFor="let scaleChord of chordProgressions">
+        {{scaleChord.scaleDegree}}
+      </div>
+  </div>
+  <div class="flex-container">
+    <div class="flex-item" *ngFor="let scaleChord of chordProgressions">
+      {{scaleChord.chord}}
+    </div>
+  </div>
+</div>
+<div>
+  Action buttons - common component
+</div>

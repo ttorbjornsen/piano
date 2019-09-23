@@ -1,3 +1,16 @@
-<piano-card>
+<div *ngIf="scales$ | async as scales">
+  <div>
+    <mat-radio-group (ngModelChange)="onScaleChange($event)" [ngModel]="selectedScale">
+      <mat-radio-button [value]="scale.name" *ngFor="let scale of scales">{{scale.name}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    <mat-radio-group (ngModelChange)="onChordProgressionChange($event)" [ngModel]="selectedChordProgression" >
+      <mat-radio-button [value]="['II', 'V', 'I']">II-V-I</mat-radio-button>
+      <mat-radio-button [value]="['IV', 'V', 'I']">IV-V-I</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <piano-chord-progression [chordProgressions$]="chordProgressions$"></piano-chord-progression>
+</div>
 
-</piano-card>
+

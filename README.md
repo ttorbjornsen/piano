@@ -1,6 +1,15 @@
 # Piano
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+ 
+Goals : 
+* Learn chords
+
+Ways : 
+* Randomized chords (and inversions) to be presented to user. User needs to play. Refresh every x seconds. 
+Possible to hear chord playing as answer and see pattern on piano.   
+* Chords should maybe appear as a circle of fifth diatonic group https://www.youtube.com/watch?v=50CpDZvTWks. Also use 6 diatonic chords of 
+the parallell minor chords. Fifth chord in a minor progression often is a major chord (https://www.youtube.com/watch?v=6OlwIOqNoUU)
+  
 
 ## Development server
 

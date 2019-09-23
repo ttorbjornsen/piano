@@ -1,9 +1,38 @@
-<mat-card class="example-card">
-  <mat-card-content>
-    <piano-sheet></piano-sheet>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>SUCCESS</button>
-    <button mat-button>FAILED</button>
-  </mat-card-actions>
-</mat-card>
+<!--<mat-card class="example-card">-->
+<!--  <mat-card-content>-->
+<!--    <piano-sheet [xml]="musicXml"></piano-sheet>-->
+<!--  </mat-card-content>-->
+<!--</mat-card>-->
+
+<div *ngIf="scale$ | async as scale">
+
+  <div class="flex-container">
+    <div class="flex-item" *ngFor="let chord of scale.chords">
+      <mat-card>
+        <mat-card-content class="temp-card">
+          <dl>
+            <dd class="mat-body-2">{{ chord.chord}}</dd>
+            <dd class="mat-body-2">{{ chord.scaleDegree}}</dd>
+          </dl>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!--<div class="flex-container">-->
+<!--  <div class="flex-item" *ngFor="let chord of scale.chords">-->
+<!--    <mat-card>-->
+<!--      <mat-card-content class="temp-card">-->
+<!--        <dl>-->
+<!--          <dd class="mat-body-2">{{ chord.scaleDegree}}</dd>-->
+<!--&lt;!&ndash;          <dd class="mat-body-2">{{ chord.chord.name}}</dd>&ndash;&gt;-->
+<!--        </dl>-->
+
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+<!--  </div>-->
+<!--</div>-->
+
+

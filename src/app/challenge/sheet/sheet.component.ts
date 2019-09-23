@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {OpenSheetMusicDisplay} from 'opensheetmusicdisplay';
 
@@ -7,25 +7,44 @@ import {OpenSheetMusicDisplay} from 'opensheetmusicdisplay';
   templateUrl: './sheet.component.html',
   styleUrls: ['./sheet.component.scss']
 })
-export class SheetComponent implements OnInit, AfterViewInit {
+export class SheetComponent implements OnInit, AfterViewInit, OnChanges {
 
-  musicXml: string;
   openSheetMusicDisplay: OpenSheetMusicDisplay;
-
+  @Input() xml: string;
   constructor(private http: HttpClient) {
 
   }
   ngOnInit() {
-    const _headers = new HttpHeaders();
-    const headers = _headers.set('Content-Type', 'text/xml')
-    this.http.get('./assets/test.musicxml', {headers: _headers, responseType: 'text'})
-      .subscribe(res => this.musicXml = res);
+    console.log('ngoninit');
 
   }
 
   ngAfterViewInit(): void {
-    const container = document.getElementById('tempdiv');
-    this.openSheetMusicDisplay = new OpenSheetMusicDisplay(container, {backend: 'canvas', drawingParameters: 'compact', drawPartNames: false});
+  }
+
+  refresh(): void {
+    this.openSheetMusicDisplay
+      .load(this.xml)
+      .then(
+        () => this.openSheetMusicDisplay.render(),
+        (err) => console.log('Error retrieving osmd xml', err)
+      ).then(
+      () => console.log('Sheet music displayed.'),
+      (err) => console.log('Error rendering osmd xml', err)
+    );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngonchanges');
+    if (!this.openSheetMusicDisplay){
+      const container = document.getElementById('sheetDiv');
+      this.openSheetMusicDisplay = new OpenSheetMusicDisplay(container,
+        {drawingParameters: 'compact', drawPartNames: false, drawTitle: false});
+    }
+    if (changes && changes.xml) {
+      this.xml = changes.xml.currentValue;
+      this.refresh();
+    }
 
   }
 

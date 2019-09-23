@@ -4,24 +4,26 @@ import {CommonModule} from '@angular/common';
 import {ChallengeRoutingModule} from './challenge-routing.module';
 import {ChallengeComponent} from './challenge.component';
 import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule, MatIconModule} from '@angular/material';
+import {MatCheckboxModule, MatIconModule, MatInputModule, MatRadioModule} from '@angular/material';
 import {CardComponent} from './card/card.component';
-import {OsmdRendererModule} from 'osmd-angular';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../shared/shared.module';
 import {SheetComponent} from './sheet/sheet.component';
+import { KeyboardComponent } from './keyboard/keyboard.component';
+import { ChordProgressionComponent } from './chord-progression/chord-progression.component';
 
 @NgModule({
-  declarations: [ChallengeComponent, CardComponent, SheetComponent],
+  declarations: [ChallengeComponent, CardComponent, SheetComponent, KeyboardComponent, ChordProgressionComponent],
   imports: [
     CommonModule,
     ChallengeRoutingModule,
     MatCardModule,
+    MatInputModule,
     MatCheckboxModule,
     MatIconModule,
-    OsmdRendererModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    MatRadioModule
   ]
 })
 export class ChallengeModule { }
